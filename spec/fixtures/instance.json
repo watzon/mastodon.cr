@@ -1,0 +1,7 @@
+{
+  "uri": "example.com",
+  "title": "Mastodon Webmock",
+  "description": "Description",
+  "email": "admin@example.com",
+  "version": "1.4.1"
+}
