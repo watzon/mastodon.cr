@@ -1,7 +1,5 @@
 # mastodon
 
-[![Build Status](https://travis-ci.org/decors/mastodon.cr.svg?branch=master)](https://travis-ci.org/decors/mastodon.cr)
-
 A Crystal-lang library for [Mastodon](https://github.com/tootsuite/mastodon/) API
 
 ## Installation
@@ -11,7 +9,7 @@ Add this to your application's `shard.yml`:
 ```yaml
 dependencies:
   mastodon:
-    github: decors/mastodon.cr
+    github: spencerking/mastodon.cr
 ```
 
 ## Usage
@@ -20,7 +18,7 @@ dependencies:
 require "mastodon"
 ```
 
-### Regist application & Authenticate
+### Register application & Authenticate
 
 ```crystal
 client = Mastodon::REST::Client.new(url: "example.com")
@@ -49,7 +47,7 @@ client = Mastodon::REST::Client.new(url: "example.com", access_token: "ACCESS_TO
 
 ## Contributing
 
-1. Fork it ( https://github.com/decors/mastodon.cr/fork )
+1. Fork it ( https://github.com/spencerking/mastodon.cr/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
@@ -57,4 +55,5 @@ client = Mastodon::REST::Client.new(url: "example.com", access_token: "ACCESS_TO
 
 ## Contributors
 
-- [Decors](https://github.com/decors)  - creator, maintainer
+- [Decors](https://github.com/decors)  - creator
+- [spencerking](https://github.com/spencerking)  - maintainer
