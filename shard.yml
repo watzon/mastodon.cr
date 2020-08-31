@@ -1,10 +1,11 @@
 name: mastodon
-version: 0.1.1
+version: 0.1.2
 
 authors:
+  - Spencer King (current maintainer)
   - Decors <decors1215@gmail.com>
 
-crystal: 0.24.1
+crystal: 0.35.1
 
 license: MIT
 
