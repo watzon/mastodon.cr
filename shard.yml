@@ -12,7 +12,4 @@ license: MIT
 development_dependencies:
   webmock:
     github: manastech/webmock.cr
-    version: ~> 0.9.1
-  spec2:
-    github: ThunderKey/spec2.cr
-    branch: fix-with-crystal-version-0.24.1
+    version: ~> 0.13.0
