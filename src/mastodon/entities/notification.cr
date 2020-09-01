@@ -5,15 +5,13 @@ require "./status"
 module Mastodon
   module Entities
     class Notification
-
       JSON.mapping({
-        id: String,
-        type: String, # "mention", "reblog", "favourite", "follow"
-        created_at: { type: Time, converter: Time::Format.new("%Y-%m-%dT%T") },
-        account: Entities::Account,
-        status: { type: Entities::Status, nilable: true }
+        id:         String,
+        type:       String, # "mention", "reblog", "favourite", "follow"
+        created_at: {type: Time, converter: Time::Format.new("%Y-%m-%dT%T")},
+        account:    Entities::Account,
+        status:     {type: Entities::Status, nilable: true},
       })
-
     end
   end
 end
