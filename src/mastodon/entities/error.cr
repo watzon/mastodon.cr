@@ -3,9 +3,10 @@ require "json"
 module Mastodon
   module Entities
     class Error
-      JSON.mapping({
-        error: String,
-      })
+      include JSON::Serializable
+
+      @[JSON::Field(key: "error")]
+      property error : String
     end
   end
 end

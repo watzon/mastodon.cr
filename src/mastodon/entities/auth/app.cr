@@ -4,12 +4,19 @@ module Mastodon
   module Entities
     module Auth
       class App
-        JSON.mapping({
-          id:            Int64,
-          redirect_uri:  String,
-          client_id:     String,
-          client_secret: String,
-        })
+        include JSON::Serializable
+
+        @[JSON::Field(key: "id")]
+        property id : Int64
+
+        @[JSON::Field(key: "redirect_uri")]
+        property redirect_uri : String
+
+        @[JSON::Field(key: "client_id")]
+        property client_id : String
+
+        @[JSON::Field(key: "client_secret")]
+        property client_secret : String
 
         def_equals id
       end
