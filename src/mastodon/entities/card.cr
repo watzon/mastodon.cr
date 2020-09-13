@@ -3,12 +3,19 @@ require "json"
 module Mastodon
   module Entities
     class Card
-      JSON.mapping({
-        url:         {type: String, nilable: true},
-        title:       {type: String, nilable: true},
-        description: {type: String, nilable: true},
-        image:       {type: String, nilable: true},
-      })
+      include JSON::Serializable
+
+      @[JSON::Field(key: "url")]
+      property url : String?
+
+      @[JSON::Field(key: "title")]
+      property title : String?
+
+      @[JSON::Field(key: "description")]
+      property description : String?
+
+      @[JSON::Field(key: "image")]
+      property image : String?
     end
   end
 end

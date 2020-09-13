@@ -5,11 +5,16 @@ require "./status"
 module Mastodon
   module Entities
     class Results
-      JSON.mapping({
-        accounts: {type: Array(Entities::Account), nilable: true},
-        statuses: {type: Array(Entities::Status), nilable: true},
-        hashtags: {type: Array(String), nilable: true},
-      })
+      include JSON::Serializable
+
+      @[JSON::Field(key: "accounts")]
+      property accounts : Array(Entities::Account?)
+
+      @[JSON::Field(key: "statuses")]
+      property statuses : Array(Entities::Status?)
+
+      @[JSON::Field(key: "hashtags")]
+      property hashtags : Array(String?)
     end
   end
 end

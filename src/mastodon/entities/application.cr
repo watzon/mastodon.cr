@@ -3,10 +3,13 @@ require "json"
 module Mastodon
   module Entities
     class Application
-      JSON.mapping({
-        name:    String,
-        website: {type: String, nilable: true},
-      })
+      include JSON::Serializable
+
+      @[JSON::Field(key: "name")]
+      property name : String
+
+      @[JSON::Field(key: "website")]
+      property website : String?
     end
   end
 end
