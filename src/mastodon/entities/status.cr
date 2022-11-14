@@ -1,77 +1,68 @@
-require "json"
-require "./attachment"
-require "./mention"
-require "./account"
-require "./tag"
-require "./status"
-
 module Mastodon
   module Entities
     class Status
       include JSON::Serializable
 
-      @[JSON::Field(key: "id")]
       property id : String
 
-      @[JSON::Field(key: "uri")]
-      property uri : String
-
-      @[JSON::Field(key: "url")]
-      property url : String
-
-      @[JSON::Field(key: "account")]
-      property account : Entities::Account
-
-      @[JSON::Field(key: "in_reply_to_id")]
-      property in_reply_to_id : Int64?
-
-      @[JSON::Field(key: "in_reply_to_account_id")]
-      property in_reply_to_account_id : Int64?
-
-      @[JSON::Field(key: "reblog")]
-      property reblog : Entities::Status?
-
-      @[JSON::Field(key: "content")]
-      property content : String
-
-      @[JSON::Field(key: "created_at", converter: Time::Format.new("%Y-%m-%dT%T"))]
+      @[JSON::Field(converter: Time::Format.new("%Y-%m-%dT%T"))]
       property created_at : Time
 
-      @[JSON::Field(key: "reblogs_count")]
-      property reblogs_count : Int32
+      property in_reply_to_id : String?
 
-      @[JSON::Field(key: "favourites_count")]
-      property favourites_count : Int32
+      property in_reply_to_account_id : String?
 
-      @[JSON::Field(key: "reblogged")]
-      property reblogged : Bool?
+      property sensitive : Bool
 
-      @[JSON::Field(key: "favourited")]
-      property favourited : Bool?
-
-      @[JSON::Field(key: "sensitive")]
-      property sensitive : Bool?
-
-      @[JSON::Field(key: "spoiler_text")]
       property spoiler_text : String
 
-      @[JSON::Field(key: "visibility")]
+      # TODO: Make enum
       property visibility : String # public, unlisted, private, direct
 
-      @[JSON::Field(key: "media_attachments")]
-      property media_attachments : Array(Entities::Attachment)
+      property language : String?
 
-      @[JSON::Field(key: "mentions")]
-      property mentions : Array(Entities::Mention)
+      property uri : String
 
-      @[JSON::Field(key: "tags")]
-      property tags : Array(Entities::Tag)
+      property url : String?
 
-      @[JSON::Field(key: "application")]
-      property application : Entities::Application?
+      property replies_count : Int32
 
-      @[JSON::Field(key: "language")]
-      property language : String # from v1.4rc3
+      property reblogs_count : Int32
+
+      property favourites_count : Int32
+
+      property content : String
+
+      property reblog : Bool?
+
+      property application : Application
+
+      property account : Account
+
+      property media_attachments : Array(Attachment)
+
+      property mentions : Array(Mention)
+
+      property tags : Array(Tag)
+
+      property emojis : Array(Emoji)
+
+      property card : Card?
+
+      property poll : Poll?
+
+      property text : String?
+
+      # Authorized users
+      property favourited : Bool?
+
+      property reblogged : Bool?
+
+      property muted : Bool?
+
+      property bookmarked : Bool?
+
+      property pinned : Bool?
 
       def_equals id
     end

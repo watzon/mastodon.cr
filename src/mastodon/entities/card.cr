@@ -1,21 +1,36 @@
-require "json"
-
 module Mastodon
   module Entities
     class Card
       include JSON::Serializable
 
-      @[JSON::Field(key: "url")]
-      property url : String?
+      property url : String
 
-      @[JSON::Field(key: "title")]
-      property title : String?
+      property title : String
 
-      @[JSON::Field(key: "description")]
-      property description : String?
+      property description : String
 
-      @[JSON::Field(key: "image")]
+      # TODO: Make enum
+      property type : String # "link", "photo", "video", "rich"
+
+      property author_name : String?
+
+      property author_url : String?
+
+      property provider_name : String?
+
+      property provider_url : String?
+
+      property html : String?
+
+      property width : Int32?
+
+      property height : Int32?
+
       property image : String?
+
+      property embed_url : String?
+
+      property blurhash : String?
     end
   end
 end

@@ -1,29 +1,47 @@
 [
   {
     "id": "1",
-    "following": false,
-    "followed_by": false,
+    "following": true,
+    "showing_reblogs": true,
+    "notifying": false,
+    "followed_by": true,
     "blocking": false,
+    "blocked_by": false,
     "muting": false,
+    "muting_notifications": false,
     "requested": false,
-    "domain_blocking": false
+    "domain_blocking": false,
+    "endorsed": false,
+    "note": ""
   },
   {
     "id": "2",
-    "following": false,
-    "followed_by": false,
+    "following": true,
+    "showing_reblogs": true,
+    "notifying": false,
+    "followed_by": true,
     "blocking": false,
+    "blocked_by": false,
     "muting": false,
+    "muting_notifications": false,
     "requested": false,
-    "domain_blocking": false
+    "domain_blocking": false,
+    "endorsed": false,
+    "note": ""
   },
   {
     "id": "3",
-    "following": false,
-    "followed_by": false,
+    "following": true,
+    "showing_reblogs": true,
+    "notifying": false,
+    "followed_by": true,
     "blocking": false,
+    "blocked_by": false,
     "muting": false,
+    "muting_notifications": false,
     "requested": false,
-    "domain_blocking": false
+    "domain_blocking": false,
+    "endorsed": false,
+    "note": ""
   }
 ]

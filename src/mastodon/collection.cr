@@ -7,5 +7,9 @@ module Mastodon
     def prev_id
       self.max_of { |item| item.id }
     end
+
+    def inspect
+      return "#<Collection #{super}>"
+    end
   end
 end

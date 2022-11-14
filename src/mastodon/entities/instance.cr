@@ -1,24 +1,35 @@
-require "json"
-
 module Mastodon
   module Entities
     class Instance
       include JSON::Serializable
 
-      @[JSON::Field(key: "uri")]
       property uri : String
 
-      @[JSON::Field(key: "title")]
       property title : String
 
-      @[JSON::Field(key: "description")]
       property description : String
 
-      @[JSON::Field(key: "email")]
+      property short_description : String
+
       property email : String
 
-      @[JSON::Field(key: "version")]
       property version : String
+
+      property languages : Array(String)
+
+      property registrations : Bool
+
+      property approval_required : Bool
+
+      property invites_enabled : Bool
+
+      property urls : Hash(String, String)
+
+      property stats : Hash(String, Int32)
+
+      property thumbnail : String?
+
+      property contact_account : Account?
     end
   end
 end

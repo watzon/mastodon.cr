@@ -1,13 +1,15 @@
 module Mastodon
   module Entities
-    class Results
+    class Conversation
       include JSON::Serializable
+
+      property id : String
 
       property accounts : Array(Account)
 
-      property statuses : Array(Status)
+      property unread : Bool
 
-      property hashtags : Array(Tag)
+      property last_status : Status?
     end
   end
 end

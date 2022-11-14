@@ -1,3 +1,5 @@
+require "./entities/**"
+
 module Mastodon
   module Entities
     def self.from_response(response, klass)

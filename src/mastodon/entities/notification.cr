@@ -1,26 +1,19 @@
-require "json"
-require "./account"
-require "./status"
-
 module Mastodon
   module Entities
     class Notification
       include JSON::Serializable
 
-      @[JSON::Field(key: "id")]
       property id : String
 
-      @[JSON::Field(key: "type")]
-      property type : String # "mention", "reblog", "favourite", "follow"
+      # TODO: Make enum
+      property type : String # "follow", "follow_request", "mention", "reblog", "favourite", "poll", "status"
 
-      @[JSON::Field(key: "created_at", converter: Time::Format.new("%Y-%m-%dT%T"))]
+      @[JSON::Field(converter: Time::Format.new("%Y-%m-%dT%T"))]
       property created_at : Time
 
-      @[JSON::Field(key: "account")]
-      property account : Entities::Account
+      property account : Account
 
-      @[JSON::Field(key: "redirect_uri")]
-      property status : Entities::Status?
+      property status : Status?
     end
   end
 end

@@ -1,47 +1,79 @@
-require "json"
-
 module Mastodon
   module Entities
     class Attachment
       include JSON::Serializable
 
-      @[JSON::Field(key: "id")]
       property id : String
 
-      @[JSON::Field(key: "type")]
+      # TODO: Make enum
       property type : String # "image", "video", "gifv"
 
-      @[JSON::Field(key: "url")]
       property url : String
 
-      @[JSON::Field(key: "remote_url")]
-      property remote_url : String?
-
-      @[JSON::Field(key: "preview_url")]
       property preview_url : String
 
-      @[JSON::Field(key: "text_url")]
-      property text_url : String?
+      property remote_url : String?
 
-      # @[JSON::Field(key: "meta")]
-      # property meta : Hash(String, Attachment::MetaData)?
+      property meta : Hash(String, Attachment::Metadata)?
+
+      property description : String?
+
+      property blurhash : String?
 
       def_equals id
 
-      class MetaData
+      class Metadata
         include JSON::Serializable
 
-        @[JSON::Field(key: "width")]
-        property width : Int32
+        property length : String?
 
-        @[JSON::Field(key: "height")]
-        property height : Int32
+        property duration : Float64?
 
-        @[JSON::Field(key: "size")]
-        property size : String
+        property fps : Int32?
 
-        @[JSON::Field(key: "aspect")]
-        property aspect : Float32
+        property size : String?
+
+        property width : Int32?
+
+        property height : Int32?
+
+        property aspect : Float64?
+
+        property audio_encode : String?
+
+        property audio_bitrate : String?
+
+        property audio_channels : String?
+
+        property original : Original?
+
+        property small : Small?
+
+        class Original
+          include JSON::Serializable
+
+          property width : Int32
+
+          property height : Int32
+
+          property frame_rate : String
+
+          property duration : Float64
+
+          property bitrate : Int32
+        end
+
+        class Small
+          include JSON::Serializable
+
+          property width : Int32
+
+          property height : Int32
+
+          property size : String
+
+          property aspect : Float64
+        end
       end
     end
   end

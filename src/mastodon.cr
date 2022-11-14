@@ -1,5 +1,4 @@
 require "./mastodon/*"
-require "./mastodon/entities/**"
 require "./mastodon/utils/**"
 require "./mastodon/rest/**"
 require "./mastodon/streaming/**"

@@ -1,15 +1,27 @@
-require "json"
-
 module Mastodon
   module Entities
+    # TODO: Fix once documentation is available
     class Report
       include JSON::Serializable
 
-      @[JSON::Field(key: "id")]
       property id : String
 
-      @[JSON::Field(key: "action_taken")]
       property action_taken : Bool
+
+      @[JSON::Field(converter: Time::Format.new("%Y-%m-%dT%T"))]
+      property action_taken_at : Time?
+
+      property category : String?
+
+      property comment : String?
+
+      property forwarded : Bool?
+
+      property created_at : Time?
+
+      property status_ids : Array(String) = [] of String
+
+      property rule_ids : Array(String) = [] of String
 
       def_equals id
     end
