@@ -35,7 +35,8 @@ module Mastodon
 
       property reblog : Bool?
 
-      property application : Application
+      # nilable, even though the docs say otherwise
+      property application : Application?
 
       property account : Account
 

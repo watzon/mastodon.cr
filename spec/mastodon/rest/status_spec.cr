@@ -75,7 +75,7 @@ describe Mastodon::REST::Statuses do
     end
 
     it "is a Mastodon::Entities::Status" do
-      client.{{ method.id }}(1).should be_a Mastodon::Entities::Status
+      client.{{ method.id }}_status(1).should be_a Mastodon::Entities::Status
     end
   end
   {% end %}

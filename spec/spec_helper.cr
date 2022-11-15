@@ -23,7 +23,7 @@ def default_headers
 end
 
 # GET
-def stub_get(path, fixture, params : String | Hash(String, String) = "")
+def stub_get(path, fixture, params : String | Hash | NamedTuple = "")
   params = HTTP::Params.encode(params) if params.is_a?(Hash)
   path += "?#{params}" unless params.empty?
   WebMock.stub(:get, "https://example.com#{path}")
@@ -32,7 +32,8 @@ def stub_get(path, fixture, params : String | Hash(String, String) = "")
 end
 
 # POST
-def stub_post(path, fixture = nil, body : String | Hash(String, String) = "")
+def stub_post(path, fixture = nil, body : String | Hash | NamedTuple = "")
+  body = body.to_h.transform_keys(&.to_s).transform_values(&.to_s) if (body.is_a?(Hash) || body.is_a?(NamedTuple))
   body = HTTP::Params.encode(body) if body.is_a?(Hash)
   response_body = fixture.nil? ? "{}" : load_fixture(fixture)
   headers = HTTP::Headers{"Content-type" => "application/x-www-form-urlencoded"}

@@ -10,15 +10,29 @@ module Mastodon
       include Mastodon::REST::Api
       include Mastodon::REST::OAuth
 
+      @bearer_token : String?
+
+      def set_auth_token(token)
+        @bearer_token = token
+      end
+
       def get(path : String, params : String | Hash(String, String) = "")
+        params = params.to_h.transform_keys(&.to_s).transform_values(&.to_s) if (params.is_a?(Hash) || params.is_a?(NamedTuple))
         params = HTTP::Params.encode(params) if params.is_a?(Hash)
         path += "?#{params}" unless params.empty?
         response = @http_client.get(path, default_headers)
         proccess_response(response)
       end
 
-      def post(path : String, form : String | Hash(String, String) = "")
+      def post(path : String, form : String | Hash | NamedTuple = "")
+        form = form.to_h.transform_keys(&.to_s).transform_values(&.to_s) if (form.is_a?(Hash) || form.is_a?(NamedTuple))
         response = @http_client.post(path, form: form, headers: default_headers)
+        proccess_response(response)
+      end
+
+      def put(path : String, form : String | Hash | NamedTuple = "")
+        form = form.to_h.transform_keys(&.to_s).transform_values(&.to_s) if (form.is_a?(Hash) || form.is_a?(NamedTuple))
+        response = @http_client.put(path, form: form, headers: default_headers)
         proccess_response(response)
       end
 
@@ -31,7 +45,8 @@ module Mastodon
         proccess_response(response)
       end
 
-      def patch(path : String, form : String | Hash(String, String) = "")
+      def patch(path : String, form : String | Hash | NamedTuple = "")
+        form = form.to_h.transform_keys(&.to_s).transform_values(&.to_s) if (form.is_a?(Hash) || form.is_a?(NamedTuple))
         form = HTTP::Params.encode(form) if form.is_a?(Hash)
         headers = HTTP::Headers{"Content-type" => "application/x-www-form-urlencoded"}
         response = @http_client.patch(path, headers.merge!(default_headers), form)
@@ -47,7 +62,8 @@ module Mastodon
         proccess_response(response)
       end
 
-      def delete(path : String, form : String | Hash(String, String) = "")
+      def delete(path : String, form : String | Hash | NamedTuple = "")
+        form = form.to_h.transform_keys(&.to_s).transform_values(&.to_s) if (form.is_a?(Hash) || form.is_a?(NamedTuple))
         form = HTTP::Params.encode(form) if form.is_a?(Hash)
         headers = HTTP::Headers{"Content-type" => "application/x-www-form-urlencoded"}
         response = @http_client.delete(path, headers.merge!(default_headers), form)

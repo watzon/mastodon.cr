@@ -1,6 +1,3 @@
-require "http/client"
-require "json"
-
 module Mastodon
   module REST
     module Media
@@ -18,6 +15,8 @@ module Mastodon
           Entities.from_response(response, Entities::Attachment)
         end
       end
+
+      # TODO: Update attachment
     end
   end
 end

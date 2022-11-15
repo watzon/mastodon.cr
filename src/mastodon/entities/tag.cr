@@ -7,7 +7,7 @@ module Mastodon
 
       property url : String
 
-      property history : Array(History)
+      property history : Array(History) = [] of History
     end
   end
 end

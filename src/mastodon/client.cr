@@ -25,11 +25,11 @@ module Mastodon
 
     def authenticate(access_token : OAuth2::AccessToken::Bearer)
       @access_token = access_token
-      @access_token.not_nil!.authenticate(@http_client)
+      access_token.authenticate(@http_client)
     end
 
     private def default_headers
-      HTTP::Headers{"User-Agent" => "#{@user_agent}"}
+      HTTP::Headers { "User-Agent" => "#{@user_agent}" }
     end
   end
 end

@@ -6,6 +6,8 @@ describe Mastodon::REST::Search do
       before_each do
         params = HTTP::Params.build do |param|
           param.add "q", "QUERY"
+          param.add "limit", "20"
+          param.add "offset", "0"
         end
         stub_get("/api/v1/search", "results", params)
       end
@@ -19,6 +21,8 @@ describe Mastodon::REST::Search do
       before_each do
         params = HTTP::Params.build do |param|
           param.add "q", "https://example.com/@USER"
+          param.add "limit", "20"
+          param.add "offset", "0"
         end
         stub_get("/api/v1/search", "results_account", params)
       end
@@ -32,6 +36,8 @@ describe Mastodon::REST::Search do
       before_each do
         params = HTTP::Params.build do |param|
           param.add "q", "https://example.com/@USER/1"
+          param.add "limit", "20"
+          param.add "offset", "0"
         end
         stub_get("/api/v1/search", "results_status", params)
       end

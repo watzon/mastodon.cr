@@ -1,3 +1,6 @@
+require "json"
+require "http/client"
+
 require "./mastodon/*"
 require "./mastodon/utils/**"
 require "./mastodon/rest/**"

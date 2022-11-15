@@ -16,7 +16,7 @@ module Mastodon
 
       property voters_count : Int32
 
-      property voted : Bool
+      property voted : Bool?
 
       property own_votes : Array(Int32)
 

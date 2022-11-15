@@ -24,7 +24,7 @@ module Mastodon
       end
 
       def hashtag(hashtag, &block : Entities::Status | Int32 ->)
-        stream("#{STREAMING_BASE}/#{hashtag}") do |object|
+        stream("#{STREAMING_BASE}/hashtag?tag=#{hashtag}") do |object|
           yield object if object.is_a?(Entities::Status | Int32)
         end
       end
@@ -99,7 +99,8 @@ module Mastodon
                   end
                 end
               end
-            rescue # IO::EOFError
+            rescue ex # IO::EOFError
+              pp ex
               break
             end
           else

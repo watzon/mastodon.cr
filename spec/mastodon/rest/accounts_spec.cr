@@ -69,17 +69,31 @@ describe Mastodon::REST::Accounts do
     end
   end
 
-  {% for method in {"follow", "unfollow", "block", "unblock", "mute", "unmute", "mute_boosts", "unmute_boosts"} %}
+  {% for method in {"follow", "unfollow", "block", "unblock", "unmute"} %}
   describe "#" + "{{ method.id }}" do
     before_each do
       stub_post("/api/v1/accounts/1/{{ method.id }}", "relationship")
     end
 
     it "is a Mastodon::Entities::Relationship" do
-      client.{{ method.id }}(1).should be_a Mastodon::Entities::Relationship
+      client.{{ method.id }}_account(1).should be_a Mastodon::Entities::Relationship
     end
   end
   {% end %}
+
+  describe "#mute_account" do
+    before_each do
+      params = {
+        notifications: true,
+        duration: 0
+      }
+      stub_post("/api/v1/accounts/1/mute", "relationship", params)
+    end
+
+    it "is a Mastodon::Entities::Relationship" do
+      client.mute_account(1).should be_a Mastodon::Entities::Relationship
+    end
+  end
 
   describe "#relationships" do
     before_each do
