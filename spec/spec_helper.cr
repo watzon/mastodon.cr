@@ -43,5 +43,5 @@ def stub_post(path, fixture = nil, body : String | Hash | NamedTuple = "")
 end
 
 def client
-  Mastodon::REST::Client.new("example.com", "token")
+  Mastodon::Client.new("example.com", "token")
 end

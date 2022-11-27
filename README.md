@@ -9,7 +9,7 @@ Add this to your application's `shard.yml`:
 ```yaml
 dependencies:
   mastodon:
-    github: spencerking/mastodon.cr
+    github: watzon/mastodon.cr
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ require "mastodon"
 ### Register application & Authenticate
 
 ```crystal
-client = Mastodon::REST::Client.new(url: "example.com")
+client = Mastodon::Client.new(url: "example.com")
 app =  client.apps("My Mastodon App", scopes: "read write follow")
 
 token = client.get_access_token_using_username_password(
@@ -38,7 +38,7 @@ client.authenticate(token)
 ### Client
 
 ```crystal
-client = Mastodon::REST::Client.new(url: "example.com", access_token: "ACCESS_TOKEN")
+client = Mastodon::API::Client.new(url: "example.com", access_token: "ACCESS_TOKEN")
 ```
 
 ## Todo
@@ -47,7 +47,7 @@ client = Mastodon::REST::Client.new(url: "example.com", access_token: "ACCESS_TO
 
 ## Contributing
 
-1. Fork it ( https://github.com/spencerking/mastodon.cr/fork )
+1. Fork it ( https://github.com/watzon/mastodon.cr/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
@@ -55,5 +55,5 @@ client = Mastodon::REST::Client.new(url: "example.com", access_token: "ACCESS_TO
 
 ## Contributors
 
-- [Decors](https://github.com/decors)  - creator
-- [spencerking](https://github.com/spencerking)  - maintainer
+- [Decors](https://github.com/decors)  - original creator
+- [watzon](https://github.com/watzon)  - maintainer

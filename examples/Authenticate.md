@@ -3,7 +3,7 @@
 # Get access token with password
 
 ```crystal
-client = Mastodon::REST::Client.new(url: "example.com")
+client = Mastodon::API::Client.new(url: "example.com")
 
 token = client.get_access_token_using_username_password(
   client_id: "CLIENT_ID",
@@ -19,7 +19,7 @@ client.authenticate(token)
 # Get access token with authorization code
 
 ```crystal
-client = Mastodon::REST::Client.new(url: "example.com")
+client = Mastodon::API::Client.new(url: "example.com")
 
 url = client.authorize_uri(
   client_id: "CLIENT_ID",

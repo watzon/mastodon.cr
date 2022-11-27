@@ -1,10 +1,10 @@
 require "./src/mastodon"
 
-HOST = "mastodon.social"
-CLIENT_ID = "XXXXXXXXXXXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXX"
+HOST          = "mastodon.social"
+CLIENT_ID     = "XXXXXXXXXXXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXX"
 CLIENT_SECRET = "XXXXXXXXXXXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXX"
 
-client = Mastodon::REST::Client.new(HOST)
+client = Mastodon::API::Client.new(HOST)
 auth_uri = client.authorize_uri(CLIENT_ID, "read write")
 
 puts "Authenticate with #{auth_uri}"

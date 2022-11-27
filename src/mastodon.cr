@@ -1,10 +1,12 @@
 require "json"
 require "http/client"
 
-require "./mastodon/*"
+require "./mastodon/version"
+require "./mastodon/error"
+require "./mastodon/collection"
 require "./mastodon/utils/**"
-require "./mastodon/rest/**"
-require "./mastodon/streaming/**"
+require "./mastodon/entities"
+require "./mastodon/client"
 
 module Mastodon
   DEFAULT_ACCOUNTS_LIMIT      = 40

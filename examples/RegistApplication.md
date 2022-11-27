@@ -1,7 +1,7 @@
 # Regist Application
 
 ```crystal
-client = Mastodon::REST::Client.new(url: "example.com")
+client = Mastodon::API::Client.new(url: "example.com")
 
 app = client.apps(
   "My Mastodon App",           # Application name
